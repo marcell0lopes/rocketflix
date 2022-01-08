@@ -1,0 +1,137 @@
+$white: #fffcf9;
+
+@mixin flexCenter($justifyContent, $direction) {
+  display: flex;
+  align-items: center;
+  flex-direction: $direction;
+  justify-content: $justifyContent;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+  height: 100%;
+  background: #c31432; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #240b36,
+    #c31432
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #240b36,
+    #c31432
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+body {
+  width: 100%;
+  height: 100%;
+}
+
+main {
+  @include flexCenter(center, column);
+  text-align: center;
+  max-width: 70vw;
+  margin: 0 auto;
+  color: $white;
+
+  header {
+    h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-top: 1.4rem;
+      line-height: 3.75rem;
+    }
+
+    img {
+      margin-top: 3.125rem;
+      width: 5.3rem;
+    }
+  }
+
+  .movie {
+    .movie-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+
+      span {
+        background-color: rgba(255, 252, 249, 0.8);
+        border: 0.5px solid $white;
+        padding: 0.4rem;
+        border-radius: 50%;
+        font-size: 0.8rem;
+        margin-top: 1.4rem;
+      }
+      span.good {
+        color: green;
+      }
+      span.bad {
+        color: red;
+      }
+    }
+    img {
+      margin-top: 2rem;
+      max-height: 12rem;
+    }
+    h2 {
+      margin-top: 1.25rem;
+      font-size: 1, 25rem;
+    }
+    p {
+      margin-top: 1.25rem;
+      font-size: 1rem;
+      line-height: 1.5rem;
+    }
+  }
+}
+
+footer {
+  @include flexCenter(center, column);
+  text-align: center;
+
+  button {
+    margin-top: 2rem;
+    height: 2.9rem;
+    width: 11.25rem;
+    @include flexCenter(space-around, row);
+
+    font-weight: bold;
+
+    img {
+      height: 1.9rem;
+    }
+  }
+
+  small {
+    color: $white;
+    margin: 2rem 0;
+    max-width: 95vw;
+    opacity: 0.9;
+  }
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 18px;
+  }
+  .movie {
+    @include flexCenter(center, row);
+    .content {
+      text-align: left;
+      margin-left: 2rem;
+
+      .movie-title {
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+  }
+} ;
