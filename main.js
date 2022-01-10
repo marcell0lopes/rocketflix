@@ -71,7 +71,7 @@ const DOM = {
          <h2 id="title">${movie.title}</h2>    
          <small>Título original: ${movie.original_title}</small>     
          <span id="movie-votes" class="${
-           movie.vote_average > 7 ? 'good' : 'bad'
+           movie.vote_average >= 7 ? 'good' : 'bad'
          }">${movie.vote_average.toFixed(1)}</span>         
        </div>
        <p id="description">
