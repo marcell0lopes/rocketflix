@@ -55,48 +55,49 @@ main header img {
   width: 5.3rem;
 }
 
-main .movie .movie-title {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+main .movie_image {
+  margin-top: 2rem;
+  height: 27rem;
+}
+
+main #movie-votes {
+  height: 2rem;
+  width: 2rem;
+  padding: 0.4rem;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  margin: 1.4rem;
+}
+
+main #movie-votes.good {
+  background-color: rgba(0, 255, 0, 0.8);
+  border: 0.5px solid #fffcf9;
+  color: #fff;
+}
+
+main #movie-votes.bad {
+  background-color: rgba(255, 0, 0, 0.8);
+  border: 0.5px solid #fffcf9;
+  color: #fff;
+}
+
+#description {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.movie-title {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+  margin-bottom: 2rem;
 }
 
-main .movie .movie-title span {
-  background-color: rgba(255, 252, 249, 0.8);
-  border: 0.5px solid #fffcf9;
-  padding: 0.4rem;
-  border-radius: 50%;
-  font-size: 0.8rem;
-  margin-top: 1.4rem;
-}
-
-main .movie .movie-title span.good {
-  color: green;
-}
-
-main .movie .movie-title span.bad {
-  color: red;
-}
-
-main .movie img {
-  margin-top: 2rem;
-  max-height: 12rem;
-}
-
-main .movie h2 {
+.movie-title #title {
   margin-top: 1.25rem;
   font-size: 1, 25rem;
-}
-
-main .movie p {
-  margin-top: 1.25rem;
-  font-size: 1rem;
-  line-height: 1.5rem;
 }
 
 footer {

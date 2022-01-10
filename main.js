@@ -3,13 +3,13 @@ import { API_KEY, BASE_URL, IMG_URL, language } from './api.js';
 // Defini uma função pra gerar um número aleatóro
 // para buscarmos um filme de forma aleatória
 const Utils = {
-  getRandomNumber() {
-    return Math.floor(Math.random() * 80000);
+  getRandomNumber(num) {
+    return Math.floor(Math.random() * num);
   },
 };
 
 //Defini funções para trabalhar a API
-const tmdb = {
+const Movie = {
   // essa função monta o Request
   doGet(url) {
     let request = new XMLHttpRequest();
@@ -20,22 +20,80 @@ const tmdb = {
 
   // essa função requesta a URI
   getMovie() {
-    let result = API.doGet(
-      `https://api.themoviedb.org/3/movie/${Utils.getRandomNumber()}?api_key=${API_KEY}&language=pt-BR`
+    const notFound = {
+      poster_path: null,
+      title: 'Tente novamente!',
+      vote_average: 0,
+      original_title: 'Não conseguimos achar um filme :(',
+      overview: '',
+    };
+
+    let result = Movie.doGet(
+      `https://api.themoviedb.org/3/movie/${Utils.getRandomNumber(
+        1000
+      )}?api_key=${API_KEY}&language=en-US`
     );
+
     let movie = JSON.parse(result);
+
     if (movie.status_code === 34) {
-      console.log("Oh no!! Couldn't find that");
+      return notFound;
     } else {
-      console.log(movie);
       return movie;
     }
   },
 };
 
-// Proximos passos:
-//
-// Acessar o DOM
-// fazer com que ele mostre as informações da api
-// fazer ele mudar de acordo com o pressionar do botão
-// Fazer um novo request sempre que apertar o botão
+const DOM = {
+  movieContainer: document.getElementById('movie'),
+  randomMovie: Movie.getMovie(),
+
+  addMovie(movie) {
+    const div = document.createElement('div');
+    div.innerHTML = DOM.innerHTMLMovies(movie);
+    DOM.movieContainer.appendChild(div);
+  },
+
+  clearMovie() {
+    DOM.movieContainer.innerHTML = '';
+  },
+
+  innerHTMLMovies(movie) {
+    const html = `
+     <img class="movie_image" src="${
+       movie.poster_path
+         ? `https://image.tmdb.org/t/p/original${movie.poster_path}`
+         : '/assets/not-found.png'
+     }"
+     alt="movie image" />                   
+     <div class="content">
+       <div class="movie-title">
+         <h2 id="title">${movie.title}</h2>    
+         <small>Título original: ${movie.original_title}</small>     
+         <span id="movie-votes" class="${
+           movie.vote_average > 7 ? 'good' : 'bad'
+         }">${movie.vote_average.toFixed(1)}</span>         
+       </div>
+       <p id="description">
+       ${movie.overview}
+       </p></div>`;
+    return html;
+  },
+};
+
+const App = {
+  init() {
+    console.log(DOM.randomMovie);
+    console.log(DOM.innerHTMLMovies(DOM.randomMovie));
+    DOM.addMovie(DOM.randomMovie);
+  },
+};
+
+shuffleMovieButton.addEventListener(
+  'click',
+  () => {
+    DOM.clearMovie();
+    DOM.addMovie(Movie.getMovie());
+  },
+  false
+);

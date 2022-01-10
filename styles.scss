@@ -56,40 +56,44 @@ main {
     }
   }
 
-  .movie {
-    .movie-title {
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
+  .movie_image {
+    margin-top: 2rem;
+    height: 27rem;
+  }
 
-      span {
-        background-color: rgba(255, 252, 249, 0.8);
-        border: 0.5px solid $white;
-        padding: 0.4rem;
-        border-radius: 50%;
-        font-size: 0.8rem;
-        margin-top: 1.4rem;
-      }
-      span.good {
-        color: green;
-      }
-      span.bad {
-        color: red;
-      }
-    }
-    img {
-      margin-top: 2rem;
-      max-height: 12rem;
-    }
-    h2 {
-      margin-top: 1.25rem;
-      font-size: 1, 25rem;
-    }
-    p {
-      margin-top: 1.25rem;
-      font-size: 1rem;
-      line-height: 1.5rem;
-    }
+  #movie-votes {
+    height: 2rem;
+    width: 2rem;
+    padding: 0.4rem;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    margin: 1.4rem;
+  }
+  #movie-votes.good {
+    background-color: rgba(0, 255, 0, 0.8);
+    border: 0.5px solid $white;
+    color: #fff;
+  }
+  #movie-votes.bad {
+    background-color: rgba(255, 0, 0, 0.8);
+    border: 0.5px solid $white;
+    color: #fff;
+  }
+}
+
+#description {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.movie-title {
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 2rem;
+
+  #title {
+    margin-top: 1.25rem;
+    font-size: 1, 25rem;
   }
 }
 
@@ -134,4 +138,4 @@ footer {
       }
     }
   }
-} ;
+}
