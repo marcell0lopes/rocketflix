@@ -1,4 +1,4 @@
-import { API_KEY, BASE_URL, IMG_URL, language } from './api.js';
+import { API_KEY, BASE_URL, IMG_URL, language } from '../api.js';
 
 // Defini uma função pra gerar um número aleatóro
 // para buscarmos um filme de forma aleatória
@@ -69,7 +69,7 @@ const DOM = {
      <div class="content">
        <div class="movie-title">
          <h2 id="title">${movie.title}</h2>    
-         <small>Título original: ${movie.original_title}</small>     
+         <small>${movie.original_title}</small>     
          <span id="movie-votes" class="${
            movie.vote_average >= 7 ? 'good' : 'bad'
          }">${movie.vote_average.toFixed(1)}</span>         

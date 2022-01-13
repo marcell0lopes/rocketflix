@@ -1,7 +1,7 @@
-# Rocketflix
+# Rocketflix :rocket:
 
 ## Web app that suggests random movie
 
-### Using TMDB (The Movie Database) API, HTML, SCSS and JS Vanilla
+@Rocketseat's Discover "Rocketflix" challenge.
 
-## :hourglass: Ongoing...
+### Consuming TMDB (The Movie Database) API, HTML, SCSS and JavaScript
